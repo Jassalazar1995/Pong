@@ -14,5 +14,13 @@ function draw(){
     context.fillStyle = 'white'
     context.arc(500,300,10, 0,Math.PI*2,false) // creates the ball 
     context.fill() //fills the ball in
+
+    //Drawing the right padde
+    context.fillStyle = 'white'
+    context.fillRect(980,250,20,100)
+
+    //Drawing the left paddle
+    context.fillStyle = 'white'
+    context.fillRect(0,250,20,100)
 }
 draw()
