@@ -9,8 +9,8 @@ let leftPaddleY = 250
 let leftPaddleHeight = 100
 let ballX = canvas.width/2
 let ballY = canvas.height /2
-let ballSpeedX = 2
-let ballSpeedY = 2
+let ballSpeedX = 4
+let ballSpeedY = 4
 let ballSize = 10
 paddleWidth = 20
 rightScore = 0
@@ -33,13 +33,13 @@ function drawGamefield(){
 //Drawing right paddle
 function drawRightPaddle(){
     context.fillStyle = 'white'
-    context.fillRect(980,rightPaddleY,paddleWidth,100)
+    context.fillRect(980,rightPaddleY,paddleWidth,rightPaddleHeight)
 }
 
 //Drawing left paddle
 function drawLeftPaddle(){
     context.fillStyle = 'white'
-    context.fillRect(0,leftPaddleY,20,100)
+    context.fillRect(0,leftPaddleY,20,leftPaddleHeight)
 }
 
 
@@ -74,8 +74,8 @@ function movement(){
         ballSpeedY = -ballSpeedY
     }
 
-    if (ballX < 10 + paddleWidth && ballY > leftPaddleY && ballY < leftPaddleY + 100 ||
-        ballX > canvas.width - 10 - paddleWidth && ballY > rightPaddleY && ballY < rightPaddleY + 100) {
+    if (ballX < paddleWidth && ballY > leftPaddleY && ballY < leftPaddleY + leftPaddleHeight ||
+        ballX > canvas.width - paddleWidth - ballSize && ballY > rightPaddleY && ballY < rightPaddleY + rightPaddleHeight) {
         ballSpeedX = -ballSpeedX;
     }
     // if (ballX < 0 || ballX > canvas.width) {
@@ -88,20 +88,20 @@ function movement(){
     //Scores
     if(ballX<0){
         rightScore++
-        rightPaddleHeight = Math.max(20, rightPaddleHeight-15)
+        rightPaddleHeight -=  15
         ballX = canvas.width / 2;
         ballY = canvas.height / 2;
-        ballSpeedX = 2;
-        ballSpeedY = 2;
+        ballSpeedX += 0.5;
+        ballSpeedY += 0.5;
     }
 
     else if(ballX> canvas.width){
         leftScore++
-        leftPaddleHeight = Math.max(20,leftPaddleHeight-15)
+        leftPaddleHeight -= 15
         ballX = canvas.width / 2;
         ballY = canvas.height / 2;
-        ballSpeedX = 2;
-        ballSpeedY = 2;
+        ballSpeedX += 0.5;
+        ballSpeedY += 0.5;
     }
 
 }
@@ -111,7 +111,7 @@ document.addEventListener('keydown', function(event){
         rightPaddleY = Math.max(rightPaddleY - 15,0)
     }
     else if (event.key==='ArrowDown'){
-        rightPaddleY = Math.min(rightPaddleY +15, canvas.height - 100)
+        rightPaddleY = Math.min(rightPaddleY +15, canvas.height - rightPaddleHeight)
         }
 
     else if(event.key === 'w'){
@@ -119,7 +119,7 @@ document.addEventListener('keydown', function(event){
     }
 
     else if (event.key ==='s'){
-        leftPaddleY = Math.min(leftPaddleY +15,canvas.height-100)
+        leftPaddleY = Math.min(leftPaddleY +15,canvas.height-leftPaddleHeight)
     }
 })
 
