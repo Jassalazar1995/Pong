@@ -12,8 +12,12 @@ function draw(){
 
     //drawing the  ball
     context.fillStyle = 'white'
+    context.beginPath();
     context.arc(500,300,10, 0,Math.PI*2,false) // creates the ball 
+    context.closePath();
     context.fill() //fills the ball in
+
+  
 
     //Drawing the right padde
     context.fillStyle = 'white'
@@ -23,4 +27,23 @@ function draw(){
     context.fillStyle = 'white'
     context.fillRect(0,250,20,100)
 }
-draw()
+
+
+function movement(){
+    let ballX = 500
+    let ballY = 300
+    ballX += 2
+    ballY += 2
+
+    //Ball collison with top and bottom
+    if (ballY  > canvas.height || ballY < 0){
+        ballSpeedY = -ballSpeedY
+    }
+}
+
+function play(){
+    movement()
+    draw()
+    requestAnimationFrame(play)
+}
+play()
