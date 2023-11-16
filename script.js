@@ -80,12 +80,12 @@ function draw(){
 let breakbool =false 
 function movement(){
     if(rightScore >= 6){
-        alert('Game over, right hand side wins! Refresh to play again.')
+        alert('Game over, right hand side wins! Click ok to start a new game.')
         breakbool = true
         return
     }
     else if(leftScore >=6){
-        alert('Game over, left hand side wins! Refresh to play again.')
+        alert('Game over, left hand side wins! Click ok to start a new game.')
         breakbool = true
         return alert
     }
@@ -150,9 +150,10 @@ function play(){
     
     movement()
     if (breakbool){
-        return
+        return window.location.reload()
     }
     draw()
     requestAnimationFrame(play)
 }
 play()
+
