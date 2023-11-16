@@ -77,13 +77,17 @@ function draw(){
     //Drawing left hand side score
     makeText(leftScore,canvas.width/4,50)
 }
-
+let breakbool =false 
 function movement(){
     if(rightScore >= 6){
-        alert('Game over, right hand side wins!')
+        alert('Game over, right hand side wins! Refresh to play again.')
+        breakbool = true
+        return
     }
     else if(leftScore >=6){
-        alert('Game over, left hand side wins!')
+        alert('Game over, left hand side wins! Refresh to play again.')
+        breakbool = true
+        return alert
     }
     ballX += ballSpeedX
     ballY += ballSpeedY
@@ -143,7 +147,11 @@ document.addEventListener('keydown', function(event){
 })
 
 function play(){
+    
     movement()
+    if (breakbool){
+        return
+    }
     draw()
     requestAnimationFrame(play)
 }
