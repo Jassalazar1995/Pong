@@ -10,29 +10,42 @@ let ballY = 300
 ballSpeedX = 2
 ballSpeedY = 2
 
-//This function will create the playing field, including the paddles and the ball
-function draw(){
-    //drawing the rectangle that will be played on
-    context.fillStyle = 'orange'
-    context.fillRect(0,0,1000,600)
-
-    //drawing the  ball
+// Drawing a ball
+function drawBall(){
     context.fillStyle = 'white'
     context.beginPath();
     context.arc(ballX,ballY,10, 0,Math.PI*2,false) // creates the ball 
     context.closePath();
     context.fill() //fills the ball in
+}
 
-  
+//Drawing Game field
+function drawGamefield(){
+    context.fillStyle = 'orange'
+    context.fillRect(0,0,1000,600)
+}
 
-
-    //Drawing the right padde
+//Drawing right paddle
+function drawRightPaddle(){
     context.fillStyle = 'white'
     context.fillRect(980,rightPaddleY,20,100)
+}
 
-    //Drawing the left paddle
+//Drawing left paddle
+function drawLeftPaddle(){
     context.fillStyle = 'white'
-    context.fillRect(0,250,20,100)
+    context.fillRect(0,leftPaddleY,20,100)
+}
+//This function will create the playing field, including the paddles and the ball
+function draw(){
+    //drawing the rectangle that will be played on
+    drawGamefield()
+    //drawing the  ball
+    drawBall()
+    //Drawing the right padde
+    drawRightPaddle()
+    //Drawing the left paddle
+    drawLeftPaddle()
 }
 
 function movement(){
