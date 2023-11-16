@@ -56,8 +56,9 @@ function movement(){
     if (ballY  > canvas.height || ballY < 0){
         ballSpeedY = -ballSpeedY
     }
-    if (ballX < 10 && ballY > leftPaddleY && ballY < leftPaddleY + 100 ||
-        ballX > canvas.width - 10 - 20 && ballY > 250 && ballY < rightPaddleY + 100) {
+
+    if (ballX < 30 && ballY > leftPaddleY && ballY < leftPaddleY + 100 ||
+        ballX > canvas.width - 10 - 20 && ballY > rightPaddleY && ballY < rightPaddleY + 100) {
         ballSpeedX = -ballSpeedX;
     }
     if (ballX < 0 || ballX > canvas.width) {
