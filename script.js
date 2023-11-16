@@ -3,18 +3,20 @@ const context = canvas.getContext('2d')
 
 canvas.width = 1000
 canvas.height = 600
-rightPaddleY = 250
-leftPaddleY = 250
-let ballX = 500
-let ballY = 300
-ballSpeedX = 2
-ballSpeedY = 2
+let rightPaddleY = 250
+let leftPaddleY = 250
+let ballX = canvas.width/2
+let ballY = canvas.height /2
+let ballSpeedX = 2
+let ballSpeedY = 2
+let ballSize = 10
+paddleWidth = 20
 
 // Drawing a ball
 function drawBall(){
     context.fillStyle = 'white'
     context.beginPath();
-    context.arc(ballX,ballY,10, 0,Math.PI*2,false) // creates the ball 
+    context.arc(ballX,ballY,ballSize, 0,Math.PI*2,false) // creates the ball 
     context.closePath(); // I am not sure why I need this method
     context.fill() //fills the ball in
 }
@@ -28,7 +30,7 @@ function drawGamefield(){
 //Drawing right paddle
 function drawRightPaddle(){
     context.fillStyle = 'white'
-    context.fillRect(980,rightPaddleY,20,100)
+    context.fillRect(980,rightPaddleY,paddleWidth,100)
 }
 
 //Drawing left paddle
@@ -53,12 +55,12 @@ function movement(){
     ballY += ballSpeedY
 
     //Ball collison with top and bottom
-    if (ballY  > canvas.height || ballY < 0){
+    if (ballY + ballSize > canvas.height || ballY - ballSize< 0){
         ballSpeedY = -ballSpeedY
     }
 
-    if (ballX < 30 && ballY > leftPaddleY && ballY < leftPaddleY + 100 ||
-        ballX > canvas.width - 10 - 20 && ballY > rightPaddleY && ballY < rightPaddleY + 100) {
+    if (ballX < 10 + paddleWidth && ballY > leftPaddleY && ballY < leftPaddleY + 100 ||
+        ballX > canvas.width - 10 - paddleWidth && ballY > rightPaddleY && ballY < rightPaddleY + 100) {
         ballSpeedX = -ballSpeedX;
     }
     if (ballX < 0 || ballX > canvas.width) {
