@@ -3,7 +3,7 @@ const context = canvas.getContext('2d')
 
 canvas.width = 1000
 canvas.height = 600
-
+rightPaddleY = 250
 //This function will create the playing field, including the paddles and the ball
 function draw(){
     //drawing the rectangle that will be played on
@@ -19,9 +19,10 @@ function draw(){
 
   
 
+
     //Drawing the right padde
     context.fillStyle = 'white'
-    context.fillRect(980,250,20,100)
+    context.fillRect(980,rightPaddleY,20,100)
 
     //Drawing the left paddle
     context.fillStyle = 'white'
@@ -52,6 +53,16 @@ function movement(){
         ballSpeedY = 2;
     }
 }
+//moving the paddles
+document.addEventListener('keydown', function(event){
+    if(event.key === 'ArrowUp'){
+        rightPaddleY += 30;
+        console.log(rightPaddleY)
+    }
+    else if (event.key==='ArrowDown'){
+        rightPaddleY -=30;
+    }
+})
 
 function play(){
     movement()
