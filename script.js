@@ -9,6 +9,8 @@ let leftPaddleY = 250
 let leftPaddleHeight = 100
 let ballX = canvas.width/2
 let ballY = canvas.height /2
+let ballX2 = canvas.width/2
+let ballY2 = canvas.height /2
 let ballSpeedX = 4
 let ballSpeedY = 4
 let ballSize = 10
@@ -24,6 +26,13 @@ function drawBall(){
     context.fill() //fills the ball in
 }
 
+function drawBall2(){
+    context.fillStyle = 'white'
+    context.beginPath();
+    context.arc(ballX2+10,ballY2+10,ballSize, 0,Math.PI*2,false) // creates the ball 
+    context.closePath(); // I am not sure why I need this method
+    context.fill() //fills the ball in
+}
 //Drawing Game field
 function drawGamefield(){
     context.fillStyle = 'orange'
@@ -55,6 +64,8 @@ function draw(){
     drawGamefield()
     //drawing the  ball
     drawBall()
+    //draw the 2nd ball
+    drawBall2()
     //Drawing the right padde
     drawRightPaddle()
     //Drawing the left paddle
@@ -68,6 +79,8 @@ function draw(){
 function movement(){
     ballX += ballSpeedX
     ballY += ballSpeedY
+    ballX2 += -ballSpeedX
+    ballY2 += -ballSpeedY
 
     //Ball collison with top and bottom
     if (ballY + ballSize > canvas.height || ballY - ballSize< 0){
@@ -78,28 +91,26 @@ function movement(){
         ballX > canvas.width - paddleWidth - ballSize && ballY > rightPaddleY && ballY < rightPaddleY + rightPaddleHeight) {
         ballSpeedX = -ballSpeedX;
     }
-    // if (ballX < 0 || ballX > canvas.width) {
-    //     ballX = canvas.width / 2;
-    //     ballY = canvas.height / 2;
-    //     ballSpeedX = 2;
-    //     ballSpeedY = 2;
-    // }
 
     //Scores
     if(ballX<0){
         rightScore++
-        rightPaddleHeight -=  15
+        rightPaddleHeight -=  7
         ballX = canvas.width / 2;
         ballY = canvas.height / 2;
+        ballX2 = canvas.width / 2;
+        ballY2 = canvas.height / 2;
         ballSpeedX += 0.5;
         ballSpeedY += 0.5;
     }
 
     else if(ballX> canvas.width){
         leftScore++
-        leftPaddleHeight -= 15
+        leftPaddleHeight -= 7
         ballX = canvas.width / 2;
         ballY = canvas.height / 2;
+        ballX2 = canvas.width / 2;
+        ballY2 = canvas.height / 2;
         ballSpeedX += 0.5;
         ballSpeedY += 0.5;
     }
