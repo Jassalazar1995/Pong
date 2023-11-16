@@ -65,7 +65,9 @@ function draw(){
     //drawing the  ball
     drawBall()
     //draw the 2nd ball
-    drawBall2()
+    if(rightScore >= 3 || leftScore >= 3){
+        drawBall2()
+    }
     //Drawing the right padde
     drawRightPaddle()
     //Drawing the left paddle
@@ -77,6 +79,12 @@ function draw(){
 }
 
 function movement(){
+    if(rightScore >= 6){
+        alert('Game over, right hand side wins!')
+    }
+    else if(leftScore >=6){
+        alert('Game over, left hand side wins!')
+    }
     ballX += ballSpeedX
     ballY += ballSpeedY
     ballX2 += -ballSpeedX
