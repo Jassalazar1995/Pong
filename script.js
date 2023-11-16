@@ -4,7 +4,9 @@ const context = canvas.getContext('2d')
 canvas.width = 1000
 canvas.height = 600
 let rightPaddleY = 250
+let rightPaddleHeight = 100
 let leftPaddleY = 250
+let leftPaddleHeight = 100
 let ballX = canvas.width/2
 let ballY = canvas.height /2
 let ballSpeedX = 2
@@ -76,21 +78,32 @@ function movement(){
         ballX > canvas.width - 10 - paddleWidth && ballY > rightPaddleY && ballY < rightPaddleY + 100) {
         ballSpeedX = -ballSpeedX;
     }
-    if (ballX < 0 || ballX > canvas.width) {
+    // if (ballX < 0 || ballX > canvas.width) {
+    //     ballX = canvas.width / 2;
+    //     ballY = canvas.height / 2;
+    //     ballSpeedX = 2;
+    //     ballSpeedY = 2;
+    // }
+
+    //Scores
+    if(ballX<0){
+        rightScore++
+        rightPaddleHeight = Math.max(20, rightPaddleHeight-15)
         ballX = canvas.width / 2;
         ballY = canvas.height / 2;
         ballSpeedX = 2;
         ballSpeedY = 2;
     }
 
-    //Scores
-    if(ballX<0){
-        rightScore++
-    }
-
     else if(ballX> canvas.width){
         leftScore++
+        leftPaddleHeight = Math.max(20,leftPaddleHeight-15)
+        ballX = canvas.width / 2;
+        ballY = canvas.height / 2;
+        ballSpeedX = 2;
+        ballSpeedY = 2;
     }
+
 }
 //moving the paddles
 document.addEventListener('keydown', function(event){
