@@ -1,5 +1,12 @@
-#myCanvas{
-    width: 200px;
-    height: 100px;
-    border: 1px solid black
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black;
+}
+
+canvas {
+    border:2px solid green;
 }

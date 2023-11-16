@@ -1,7 +1,13 @@
-let canvas = document.querySelector("#myCanvas")
+const canvas = document.querySelector('#pongCanvas')
+const context = canvas.getContext('2d')
 
-canvas.width = 200
-canvas.height = 100
-let can = canvas.getContext("2d")
-canvas.fillStyle = 'blue'
-can.fillRect(10,10,180,80)
+canvas.width = 1000
+canvas.height = 600
+
+//This function will create the playing field, including the paddles and the ball
+function draw(){
+    //drawing the rectangle that will be played on
+    context.fillStyle = 'orange'
+    context.fillRect(0,0,1000,600)
+}
+draw()
