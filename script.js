@@ -73,19 +73,19 @@ function movement(){
 //moving the paddles
 document.addEventListener('keydown', function(event){
     if(event.key === 'ArrowUp'){
-        rightPaddleY += 30
+        rightPaddleY -= 15
         console.log(rightPaddleY)
     }
     else if (event.key==='ArrowDown'){
-        rightPaddleY -=30
-    }
+        rightPaddleY +=15
+        }
 
     else if(event.key === 'w'){
-        leftPaddleY += 30
+        leftPaddleY -= 15
     }
 
     else if (event.key ==='s'){
-        leftPaddleY -= 30
+        leftPaddleY += 15
     }
 })
 
