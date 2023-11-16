@@ -13,7 +13,7 @@ function draw(){
     //drawing the  ball
     context.fillStyle = 'white'
     context.beginPath();
-    context.arc(500,300,10, 0,Math.PI*2,false) // creates the ball 
+    context.arc(ballX,ballY,10, 0,Math.PI*2,false) // creates the ball 
     context.closePath();
     context.fill() //fills the ball in
 
@@ -28,16 +28,28 @@ function draw(){
     context.fillRect(0,250,20,100)
 }
 
+let ballX = 500
+let ballY = 300
+ballSpeedX = 2
+ballSpeedY = 2
 
 function movement(){
-    let ballX = 500
-    let ballY = 300
-    ballX += 2
-    ballY += 2
+    ballX += ballSpeedX
+    ballY += ballSpeedY
 
     //Ball collison with top and bottom
     if (ballY  > canvas.height || ballY < 0){
         ballSpeedY = -ballSpeedY
+    }
+    if (ballX < 10 && ballY > 250 && ballY < 250 + 100 ||
+        ballX > canvas.width - 10 - 20 && ballY > 250 && ballY < 250 + 100) {
+        ballSpeedX = -ballSpeedX;
+    }
+    if (ballX < 0 || ballX > canvas.width) {
+        ballX = canvas.width / 2;
+        ballY = canvas.height / 2;
+        ballSpeedX = 2;
+        ballSpeedY = 2;
     }
 }
 
