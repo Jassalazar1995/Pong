@@ -11,7 +11,8 @@ let ballSpeedX = 2
 let ballSpeedY = 2
 let ballSize = 10
 paddleWidth = 20
-
+rightScore = 0
+leftScore = 0
 // Drawing a ball
 function drawBall(){
     context.fillStyle = 'white'
@@ -38,6 +39,14 @@ function drawLeftPaddle(){
     context.fillStyle = 'white'
     context.fillRect(0,leftPaddleY,20,100)
 }
+
+
+//Will be used to create the points
+function makeText(text,x,y){
+    context.fillStyle = 'white'
+    context.font = '46px Arial'
+    context.fillText(text,x,y)
+}
 //This function will create the playing field, including the paddles and the ball
 function draw(){
     //drawing the rectangle that will be played on
@@ -48,6 +57,10 @@ function draw(){
     drawRightPaddle()
     //Drawing the left paddle
     drawLeftPaddle()
+    //Drawing right hand side score
+    makeText(rightScore,3*canvas.width/4,50)
+    //Drawing left hand side score
+    makeText(leftScore,canvas.width/4,50)
 }
 
 function movement(){
@@ -68,6 +81,15 @@ function movement(){
         ballY = canvas.height / 2;
         ballSpeedX = 2;
         ballSpeedY = 2;
+    }
+
+    //Scores
+    if(ballX<0){
+        rightScore++
+    }
+
+    else if(ballX> canvas.width){
+        leftScore++
     }
 }
 //moving the paddles
