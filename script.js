@@ -73,19 +73,18 @@ function movement(){
 //moving the paddles
 document.addEventListener('keydown', function(event){
     if(event.key === 'ArrowUp'){
-        rightPaddleY -= 15
-        console.log(rightPaddleY)
+        rightPaddleY = Math.max(rightPaddleY - 15,0)
     }
     else if (event.key==='ArrowDown'){
-        rightPaddleY +=15
+        rightPaddleY = Math.min(rightPaddleY +15, canvas.height - 100)
         }
 
     else if(event.key === 'w'){
-        leftPaddleY -= 15
+        leftPaddleY = Math.max(leftPaddleY - 15,0)
     }
 
     else if (event.key ==='s'){
-        leftPaddleY += 15
+        leftPaddleY = Math.min(leftPaddleY +15,canvas.height-100)
     }
 })
 
