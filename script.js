@@ -52,6 +52,16 @@ function drawLeftPaddle(){
 }
 
 
+//Resetting the ball
+function ballReset(){
+    ballX = canvas.width / 2;
+    ballY = canvas.height / 2;
+    ballX2 = canvas.width / 2;
+    ballY2 = canvas.height / 2;
+    ballSpeedX += 0.5;
+    ballSpeedY += 0.5;
+}
+
 //Will be used to create the points
 function makeText(text,x,y){
     context.fillStyle = 'white'
@@ -108,23 +118,13 @@ function movement(){
     if(ballX<0){
         rightScore++
         rightPaddleHeight -=  7
-        ballX = canvas.width / 2;
-        ballY = canvas.height / 2;
-        ballX2 = canvas.width / 2;
-        ballY2 = canvas.height / 2;
-        ballSpeedX += 0.5;
-        ballSpeedY += 0.5;
+        ballReset()
     }
 
     else if(ballX> canvas.width){
         leftScore++
         leftPaddleHeight -= 7
-        ballX = canvas.width / 2;
-        ballY = canvas.height / 2;
-        ballX2 = canvas.width / 2;
-        ballY2 = canvas.height / 2;
-        ballSpeedX += 0.5;
-        ballSpeedY += 0.5;
+        ballReset()
     }
 
 }
